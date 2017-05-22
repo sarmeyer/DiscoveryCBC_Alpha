@@ -8,6 +8,7 @@ import argparse
 
 from os.path import join, dirname
 from dotenv import load_dotenv
+import os
 
 def read_json_file(file_path):
     with open(file_path) as json_file:
