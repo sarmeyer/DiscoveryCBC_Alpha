@@ -1,0 +1,5 @@
+{
+  "query":"artificial intelligence",
+  "count":25,
+  "filter":"enriched_text.docSentiment.type:positive"
+}

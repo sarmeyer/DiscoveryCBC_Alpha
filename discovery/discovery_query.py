@@ -1,9 +1,10 @@
-from watson_developer_cloud import DiscoveryV1
 import sys
+import os
 import json
 import time
-import argparse
 import pandas as pd
+from watson_developer_cloud import DiscoveryV1
+import argparse
 
 from os.path import join, dirname
 from dotenv import load_dotenv
@@ -13,6 +14,10 @@ def read_json_file(file_path):
         json_content = json_file.read()
         json_data = json.loads(json_content)
     return(json_data)
+
+def display_results(response):
+    print(json.dumps(response), indent = 2)
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("query_file")
@@ -25,7 +30,7 @@ if __name__ == '__main__':
 
     discovery = DiscoveryV1(
         username=os.environ.get("DISCOVERY_USERNAME"),
-        password=os.environ.get)("DISCOVERY_PASSWORD"),
+        password=os.environ.get("DISCOVERY_PASSWORD"),
         version="2016-12-01"
     )
 
