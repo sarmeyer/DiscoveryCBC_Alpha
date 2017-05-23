@@ -17,14 +17,27 @@ def read_json_file(file_path):
     return(json_data)
 
 def display_results(response):
-    print(json.dumps(response), indent = 2)
+    results = {}
+    prices = []
+    titleList = set()
+    results['matching_results'] = response['matching_results']
+
+    for result in response['results']:
+        prices.append(result['price'])
+        titleList.add(result['title'])
+    results['all_titles'] = titleList
+
+    for titles in response['results']:
+        if min(prices) == titles['price']:
+            results['lowest_price'] = {titles['title']: titles['price']}
+    print(results)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("query_file")
     args = parser.parse_args()
 
-    dotenv_path = join(dirname(__file__), '.gitignore')
+    dotenv_path = join(dirname(__file__), '.env')
     load_dotenv(dotenv_path)
 
     query_json = read_json_file(args.query_file)
