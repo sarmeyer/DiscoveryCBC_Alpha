@@ -1,0 +1,5 @@
+{
+  "query":"data mining",
+  "count":10,
+  "filter":"enriched_text.docSentiment.type:neutral"
+}
