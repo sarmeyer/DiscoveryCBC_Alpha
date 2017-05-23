@@ -1,0 +1,1 @@
+Using IBM Watson's Discovery tool, a user can find the cheapest book that fulfills their search query. They can also see a full list of titles that satisfy the query, along with the total number of results.
